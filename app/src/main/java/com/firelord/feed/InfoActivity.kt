@@ -1,5 +1,7 @@
 package com.firelord.feed
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -30,10 +32,21 @@ import com.firelord.feed.model.TvShow
 import com.firelord.feed.ui.theme.FeedTheme
 
 class InfoActivity : ComponentActivity() {
+    companion object{
+        private const val TvShowId = "tvshowid"
+        fun intent(context: Context,tvShow: TvShow)=
+            Intent(context,InfoActivity::class.java).apply {
+                putExtra(TvShowId,tvShow)
+            }
+    }
+
+    private val tvShow : TvShow by lazy {
+        intent?.getSerializableExtra(TvShowId) as TvShow
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
+            ViewMoreInfo(tvShow = tvShow)
         }
     }
 }
@@ -64,22 +77,22 @@ fun ViewMoreInfo(tvShow: TvShow){
             Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = tvShow.name,
-                style = MaterialTheme.typography.headlineMedium
+                style = MaterialTheme.typography.headlineLarge
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = tvShow.overview,
-                style = MaterialTheme.typography.bodySmall
+                style = MaterialTheme.typography.headlineSmall
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "Original release: ${tvShow.year}",
-                style = MaterialTheme.typography.bodySmall
+                style = MaterialTheme.typography.bodyLarge
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "IMDB : ${tvShow.rating}",
-                style = MaterialTheme.typography.bodySmall
+                style = MaterialTheme.typography.bodyLarge
             )
         }
     }

@@ -30,7 +30,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             //LazyColumnDemo2{ Toast.makeText(this,it,Toast.LENGTH_SHORT).show() }
             DisplayTvShows{
-                Toast.makeText(this,it.name,Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this,it.name,Toast.LENGTH_SHORT).show()
+                startActivity(InfoActivity.intent(this,it))
             }
         }
     }
