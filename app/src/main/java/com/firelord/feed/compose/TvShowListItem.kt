@@ -38,7 +38,9 @@ fun TvShowListItem(tvShow: TvShow, selectedItem: (TvShow) -> Unit){
             verticalAlignment = Alignment.CenterVertically
         ) {
             TvShowImage(tvShow = tvShow)
-            Column() {
+            Column(
+                modifier = Modifier.padding(10.dp)
+            ) {
                 Text(text = tvShow.name, style = MaterialTheme.typography.headlineSmall)
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
