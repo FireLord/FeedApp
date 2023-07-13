@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -28,7 +30,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ScrollableColumnDemo(){
-    Column {
+    val scrollState = rememberScrollState()
+    Column(
+        modifier = Modifier.verticalScroll(scrollState)
+    ) {
         for (i in 1..100){
             Text(
                 "User Name $i",
