@@ -26,9 +26,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            LazyColumnDemo2{
-                Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
-            }
+            //LazyColumnDemo2{ Toast.makeText(this,it,Toast.LENGTH_SHORT).show() }
+
         }
     }
 }
