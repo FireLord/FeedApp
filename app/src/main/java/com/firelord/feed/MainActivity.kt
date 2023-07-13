@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Divider
@@ -23,7 +24,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ScrollableColumnDemo()
+            LazyColumnDemo()
         }
     }
 }
@@ -43,5 +44,19 @@ fun ScrollableColumnDemo(){
             Divider(color = Color.Black, thickness = 5.dp)
         }
 
+    }
+}
+
+@Composable
+fun LazyColumnDemo(){
+    LazyColumn{
+        items(100){
+            Text(
+                "User Name $it",
+                style = MaterialTheme.typography.headlineMedium,
+                modifier = Modifier.padding(10.dp)
+            )
+            Divider(color = Color.Black, thickness = 5.dp)
+        }
     }
 }
